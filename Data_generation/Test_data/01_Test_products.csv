@@ -1,0 +1,11 @@
+product_ID,name,category,shelf_life_days,base_price,temperature_requirement,moq,viral_propensity
+PROD_001,Organic Milk,Q-Comm,2,35,Chilled,50,0.1
+PROD_002,Whole Wheat Bread,Q-Comm,5,50,Ambient,20,0.1
+PROD_003,Greek Yoghurt,Q-Comm,7,85,Chilled,10,0.2
+PROD_004,Fresh Paneer,Q-Comm,4,110,Chilled,15,0.1
+PROD_005,Farm Fresh Eggs,Q-Comm,10,70,Ambient,30,0.05
+PROD_006,Spf 50 Sunscreen,D2C,730,55,Ambient,5,0.9
+PROD_007,Vitamin C serum,D2C,365,850,Ambient,5,0.7
+PROD_008,Anti-dandruff Shampoo,D2C,730,450,Ambient,10,0.3
+PROD_009,Ceramide moisturizer,D2C,730,600,Ambient,10,0.4
+PROD_010,Facewash,D2C,730,350,Ambient,10,0.5

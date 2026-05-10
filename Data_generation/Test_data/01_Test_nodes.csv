@@ -1,0 +1,11 @@
+node_id,city,type,capacity,address
+NODE_001,Delhi,Hub,100000,"Plot No. 103, Loyal Street, Industrial Area, Delhi, India"
+NODE_002,Mumbai,Hub,100000,"Plot No. 268, Tella Ganj, Industrial Area, Mumbai, India"
+NODE_003,Mohali,Darkstore,2500,"Shop No. 136, Mukhopadhyay Street, Mohali, India"
+NODE_004,Jaipur,Darkstore,2500,"Shop No. 61, Sekhon Road, Jaipur, India"
+NODE_005,Ahemdabad,Darkstore,3000,"Shop No. 1, Baral Ganj, Ahemdabad, India"
+NODE_006,Lucknow,Darkstore,2000,"Shop No. 4, Bhatti Road, Lucknow, India"
+NODE_007,Chandigarh,Darkstore,2500,"Shop No. 95, Nayak Marg, Chandigarh, India"
+NODE_008,Gurgaon,Darkstore,3500,"Shop No. 150, Deshpande Ganj, Gurgaon, India"
+NODE_009,Noida,Darkstore,3000,"Shop No. 110, Patla, Noida, India"
+NODE_010,Pune,Darkstore,2500,"Shop No. 18, Sarkar Circle, Pune, India"
