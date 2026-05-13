@@ -1,0 +1,351 @@
+## PhantomProof - master data configuration
+## controls NB1 generation parameters
+
+simulation:
+ start_date: "2025-12-01"
+ end_date: "2026-05-31"
+
+city_distribution:
+ metropolitan: 0.60 # 60% of the nodes lie in metropolitan cities
+ tier_1: 0.30 # 30% nodes lie in tier1 cities
+ tier_2: 0.10 # 10% of the nodes lie in tier_2 cities
+
+# ------ NODE HIERARCHY ---------------
+
+mother_hubs:
+ total: 8
+ scanners_per_node: 12
+ capacity_total_units: [50000, 150000]
+ cold_fraction: [0.20, 0.35]
+ beverage_fraction: [0.12, 0.22]
+ locations:
+  Mumbai: {city_code: "MUM", zone: "Bhiwandi", zone_code: "BHI"}
+  Delhi: {city_code: "DEL", zone: "Kundli", zone_code: "KDL"}
+  Bangalore: {city_code: "BLR", zone: "Dobaspet", zone_code: "DBP"}
+  Hyderabad: {city_code: "HYD", zone: "Patancheru", zone_code: "PAT"}
+  Chennai: {city_code: "CHN", zone: "Sriperumbudur", zone_code: "SPB"}
+  Kolkata: {city_code: "KOL", zone: "Dankuni", zone_code: "DKN"}
+
+regional_hubs:
+ total: 20
+ scanners_per_node:
+  metropolitan: 7
+  tier_1: 4
+ capacity_total_units:
+  metropolitan: [8000, 25000]
+  tier_1: [4000, 10000]
+ cold_fraction:
+  metropolitan: [0.18, 0.28]
+  tier_1: [0.14, 0.22]
+ beverage_fraction:
+  metropolitan: [0.10, 0.20]
+  tier_1: [0.10, 0.18]
+
+darkstores:
+ total: 100
+ scanners_per_node:
+  metropolitan: 3
+  tier_1: 2
+  tier_2: 1
+ capacity_total_units:
+  metropolitan: [1200, 2000]
+  tier_1: [700,1200]
+  tier_2: [400,700]
+ cold_fraction:
+  metropolitan: [0.15, 0.30]
+  tier_1: [0.12, 0.22]
+  tier_2: [0.08, 0.15]
+ beverage_fraction:
+  metropolitan: [0.10, 0.20]
+  tier_1: [0.10, 0.18]
+  tier_2: [0.08, 0.15]
+
+# -------Suppliers--------------------------
+suppliers:
+ total: 15
+ edi_formats:
+  API: { fraction: 0.25, quality_score_range: [0.85, 0.99]}
+  SFTP_CSV: { fraction: 0.35, quality_score_range: [0.65,0.85]}
+  SFTP_XML: { fraction: 0.25, quality_score_range: [0.55, 0.78]}
+  email_manual: { fraction: 0.15, quality_score_range: [0.20, 0.45]}
+
+# -------Transfer windows--------------------
+transfer_windows:
+ mother_hub_to_regional_hub: "01:00-04:00" # deep night
+ regional_hub_to_darkstore: "03:00-06:00" # pre opening
+ lateral_darkstore: "10:00-16:00" # off peak hours only
+
+# -------Replenishment-----------------------
+replenishment:
+ reorder_trigger_fraction: 0.30 # trigger when stocj <30% of capacity
+ top_up_target_fraction: 0.80 # fill to 80% capacity
+ lateral_transfer_min_surplus: 20 # only transfer if source has 20+ unit surplus
+ lateral_transfer_fraction: 0.50 # transfer 50% of surplus
+
+# -------CITIES AND ZONE CODES---------------
+cities:
+ metropolitan:
+  Mumbai:
+   city_code: "MUM"
+   zone_type_tags:
+    Andheri: {code: "AND", zone_type: "transit_hub"}
+    Bandra: {code: "BAN", zone_type: "residential"}
+    Thane: {code: "TNA", zone_type: "residential"}
+    Kurla: {code: "KUR", zone_type: "commercial"}
+    Malad: {code: "MLD", zone_type: "residential"}
+    Borivali: {code: "BOR", zone_type: "residential"}
+
+  Delhi:
+   city_code: "DEL"
+   zone_type_tags:
+    Rohini: {code: "ROH", zone_type: "residential"}
+    Lajpat Nagar: {code: "LJP", zone_type: "residential"}
+    Dwarka: {code: "DWK", zone_type: "residential"}
+    Saket: {code: "SKT", zone_type: "commercial"}
+    Janakpuri: {code: "JNK", zone_type: "residential"}
+
+  Bangalore:
+   city_code: "BLR"
+   zone_type_tags:
+    Koramangala: {code: "KOR", zone_type: "it_park_adjacent"}
+    Whitefield: {code: "WHF", zone_type: "it_park_adjacent"}
+    Indiranagar: {code: "IND", zone_type: "commercial"}
+    HSR Layout: {code: "HSR", zone_type: "it_park_adjacent"}
+
+  Hyderabad:
+   city_code: "HYD"
+   zone_type_tags:
+    Banjara Hills: {code: "BNJ", zone_type: "residential"}
+    Kondapur: {code: "KON", zone_type: "it_park_adjacent"}
+    Madhapur: {code: "MAD", zone_type: "it_park_adjacent"}
+    Gachibowli: {code: "GAC", zone_type: "it_park_adjacent"}
+
+  Chennai:
+   city_code: "CHN"
+   zone_type_tags:
+    Anna Nagar: {code: "ANN", zone_type: "residential"}
+    T Nagar: {code: "TNG", zone_type: "commercial"}
+    Velachery: {code: "VEL", zone_type: "it_park_adjacent"}
+    Adyar: {code: "ADY", zone_type: "residential"}
+
+  Kolkata:
+   city_code: "KOL"
+   zone_type_tags:
+    alt Lake: {code: "SLK", zone_type: "it_park_adjacent"}
+    Park Street: {code: "PKS", zone_type: "commercial"}
+    New Town: {code: "NWT", zone_type: "it_park_adjacent"}
+    Behala: {code: "BHL", zone_type: "residential"}
+
+
+ tier_1:
+  Pune:
+   city_code: "PUN"
+   zone_type_tags:
+    Kothrud: {code: "KTH", zone_type: "residential"}
+    Wakad: {code: "WKD", zone_type: "it_park_adjacent"}
+    Baner: {code: "BNR", zone_type: "it_park_adjacent"}
+    Hadapsar: {code: "HDP", zone_type: "it_park_adjacent"}
+
+  Ahemdabad:
+   city_code: "AMD"
+   zone_type_tags:
+    Navrangpura: {code: "NAV", zone_type: "commercial"}
+    Satellite: {code: "SAT", zone_type: "residential"}
+    Bopal: {code: "BPL", zone_type: "residential"}
+    Prahlad Nagar: {code: "PRL", zone_type: "commercial"}
+
+  Jaipur:
+   city_code: "JAI"
+   zone_type_tags:
+    Malviya Nagar: {code: "MLV", zone_type: "residential"}
+    Vaishali: {code: "VAI", zone_type: "residential"}
+    C-Scheme: {code: "CSC", zone_type: "commercial"}
+
+  Lucknow:
+   city_code: "LKO"
+   zone_type_tags:
+    Gomti Nagar: {code: "GMN", zone_type: "residential"}
+    Hazratganj: {code: "HZG", zone_type: "commercial"}
+    Aliganj: {code: "ALG", zone_type: "residential"}
+
+  Chandigarh:
+   city_code: "CHD"
+   zone_type_tags:
+    Sector 17: {code: "S17", zone_type: "commercial"}
+    Sector 35: {code: "S35", zone_type: "commercial"}
+    Mohali Phase 7: {code: "MP7", zone_type: "it_park_adjacent"}
+
+  Surat:
+   city_code: "SRT"
+   zone_type_tags:
+    Vesu: {code: "VSU", zone_type: "residential"}
+    Adajan: {code: "ADJ", zone_type: "residential"}
+    Citylight: {code: "CTL", zone_type: "commercial"}
+
+ tier_2:
+  Mohali: {code: "MOH", zone_type: "residential"}
+  Indore: {code: "IDR", zone_type: "commercial"}
+  Nagpur: {code: "NGP", zone_type: "commercial"}
+  Coimbatore: {code: "CBE", zone_type: "it_park_adjacent"}
+  Bhopal: {code: "BHO", zone_type: "residential"}
+  Patna: {code: "PAT", zone_type: "commercial"}
+  Agra: {code: "AGR", zone_type: "commercial"}
+
+
+# ----Products------------------------
+products:
+ total: 100
+ price_range:
+  min: 29
+  max: 1499
+
+product_categories:
+ dairy:
+  shelf_life_days: [3,14]
+  storage_zone: "cold"
+  rto_rate_base: 0.08 # higher-perishable damage
+ beverages:
+  shelf_life_days: [90, 365]
+  storage_zone: "beverage"
+  rto_rate_base: 0.03
+ staples:
+  shelf_life_days: [180, 730]
+  storage_zone: "dry"
+  rto_rate_base: 0.02
+ snacks:
+  shelf_life_days: [60,180]
+  storage_zone: "dry"
+  rto_rate_base: 0.02
+ personal_care:
+  shelf_life_days: [365, 1095]
+  storage_zone: "dry"
+  rto_rate_base: 0.04
+ household:
+  shelf_life_days: [365,1095]
+  storage_zone: "dry"
+  rto_rate_base: 0.03
+ frozen:
+  shelf_life_days: [60,180]
+  storage_zone: "cold"
+  rto_rate_base: 0.06
+
+
+
+# ---Scanners----------------------------
+
+scanner:
+ firmware_versions: ["v1.1.0", "v1.2.3", "v2.0.1", "v2.1.4"]
+ firmware_release_dates:
+  "v1.1.0": "2024-01-15" # oldest versions have more chaos risk
+  "v1.2.3": "2024-06-20"
+  'v2.0.1': "2025-01-10"
+  "v2.1.4": "2025-09-10" # newest versions have less chaos risk
+ latency_ms:
+  good: [50,150]
+  degraded: [400,800]
+ degraded_fraction: 0.15 # 15% of the scanners have bad latency
+ dead_rtc_fraction: 0.10 # scanners with dead rtc (real-time-clock) battery (triggers utc drift in nb3)
+  
+scanner_zone_types:
+ inbound: {fraction: 0.30, chaos_affinity: "utc_drift"}
+ outbound: {fraction: 0.30, chaos_affinity: "duplicate_echo"}
+ returns: {fraction: 0.20, chaos_affinity: "null_rto_reason"}
+ stock_count: {fraction: 0.20, chaos_affinity: "batch_heartbeat"}
+
+# ---Snapshot Schedules-------------------
+
+snapshot_schedule:
+ darkstore:
+  - "06:00" # morning opening count
+  - "13:00" # peak afternoon check
+  - "18:00" # pre-evening evening peak check (6-9pm)
+  - "23:30" # midnight EOD reconciliation
+ regional_hub:
+  - "22:00" # after darkstore transfer window closes
+  - "05:00" # after overnight mother hub delivery arrives
+
+ motherhub:
+  - "20:00" # end of supplier receiving window
+  - "04:00" # after overnight regional hub dispatch completes
+
+
+# ----Demand spike events----------------------
+
+demand_spike_events:
+ - date: "2025-12-25" 
+   scope: "national"
+   product_category: "beverages"
+   multiplier: 2.1
+   reason: "Christmas celebration"
+
+ - date: "2025-12-31" 
+   scope: "national"
+   product_category: "beverages"
+   multiplier: 3.4
+   reason: "New Year Eve party supplies"
+
+ - date: "2026-01-26" 
+   scope: "national"
+   product_category: "snacks"
+   multiplier: 1.8
+   reason: "Republic day holiday"
+
+ - date_range: ["2026-01-28", "2026-01-31"] 
+   scope: "it_park_adjacent"
+   product_category: ["beverages", "snacks", "personal_care"]
+   multiplier: 1.7
+   reason: "January quarter close audit crunch"
+
+ - date: "2026-02-14" 
+   scope: "metropolitan"
+   product_category: "dairy"
+   multiplier: 1.5
+   reason: "Valentines Day dessert ingredients"
+
+ - date: "2026-03-08" 
+   scope: "metropolitan"
+   product_category: "personal_care"
+   multiplier: 1.8
+   reason: "Womens Day gifting surge"
+
+ - date: "2026-03-14" 
+   scope: "national"
+   product_category: ["beverages", "dairy", "snacks"]
+   multiplier: 2.9
+   reason: "Holi festival"
+
+ - date_range: ["2026-03-22", "2026-05-25"]
+   scope: "metropolitan"
+   product_category: "beverages"
+   multiplier: 1.4
+   time_window: "18:00-23:00"
+   reason: "IPL season evening matches"
+
+ - date_range: ["2026-03-22", "2026-05-25"] 
+   scope: "metropolitan"
+   product_category: "snacks"
+   multiplier: 1.5
+   time_window: "18:00-23:00"
+   reason: "IPL seasoning snacking"
+
+ - date_range: ["2026-03-28", "2026-03-31"] 
+   scope: "it_park_adjacent"
+   product_category: ["beverages", "snacks"]
+   multiplier: 2.1
+   reason: "Financial year audit season"
+
+ - date: "2026-04-14" 
+   scope: "national"
+   product_category: "staples"
+   multiplier: 1.6
+   reason: "Baisakhi and Tamil New Year"
+
+ - date_range: ["2026-04-15", "2026-05-31"] 
+   scope: "metropolitan"
+   cities: ["Delhi", "Hyderabad", "Chennai"] 
+   product_category: "beverages"  
+   multiplier: 1.9
+   reason: "Summer heat peak"
+
+
+ 
