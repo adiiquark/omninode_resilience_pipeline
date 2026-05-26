@@ -27,7 +27,7 @@ import re
 
 # ---SIMULATION CONSTRAINTS------
 SIM_START = date(2025,12,1)
-SIM_END = date(2026,5,31)
+SIM_END = date(2026,6,30)
 
 
 # ---dim_product---
@@ -89,7 +89,7 @@ class ProductSchema(BaseModel):
 # ----- dim_supplier -------------
 class SupplierSchema(BaseModel):
     """
-    One row per supplier. 15 suppliers generated.
+    One row per supplier. 19 suppliers generated.
     EDI format determines data quality and NB3 (chaos engine) chaos targetting:
         email_manual suppliers are the primary schema poisoning target.  
     """
