@@ -35,9 +35,7 @@ The project focuses exclusively on supply chain and logistics side of quick-comm
 
  ### Architecture
 
- config.yaml + schema.py + coordinates.py
-            |
-            |
-|-------------------------------------|
-| Notebook 1 : Master data generation | -> dim product, dim_supplier,
-|-------------------------------------|    dim_node, dim_scanner,                                         dim_hub_hierarchy
+ config.yaml + schema.md + schema.py + coordinates.py
+
+Notebook 1 : Master data generation 
+dim product, dim_supplier, dim_node, dim_scanner, dim_hub_hierarchy
