@@ -165,12 +165,12 @@ class NodeSchema(BaseModel):
     capacity_cold_units: int = Field(ge=0)
     capacity_beverage_units: int = Field(ge=0)
     capacity_dry_units: int = Field(ge=0)
-    latitude: float
-    longitude: float
+    lat: float
+    lon: float
     timezone: str = "Asia/Kolkata"
     operational_since: date
 
-    @field_validator("latitude")
+    @field_validator("lat")
     @classmethod
     def latitude_must_be_india(cls, v:float) -> float:
         if not (8.4 <= v <= 37.6):
@@ -179,7 +179,7 @@ class NodeSchema(BaseModel):
             )
         return round(v,6)
     
-    @field_validator("longitude")
+    @field_validator("lon")
     @classmethod
     def longitude_must_be_india(cls, v: float) -> float:
         if not (68.0 <= v <= 97.5):

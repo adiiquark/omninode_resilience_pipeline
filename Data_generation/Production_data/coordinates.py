@@ -143,9 +143,9 @@ def get_coordinates(
         (lat, lon) rounded to 6 decimal places
     """
     if zone_name and zone_name in zone_coordinates:
-        latitude, longitude = zone_coordinates[zone_name]
+        lat, lon = zone_coordinates[zone_name]
     elif city_name in zone_coordinates:
-        latitude, longitude = zone_coordinates[city_name]
+        lat, lon = zone_coordinates[city_name]
     else:
         raise ValueError(
             f"No coordinates found for zone '{zone_name}'"
@@ -153,7 +153,7 @@ def get_coordinates(
         )
     
     if node_type == "darkstore" and jitter:
-        latitude += random.uniform(-0.008, 0.008)
-        longitude += random.uniform(-0.008, 0.008)
+        lat += random.uniform(-0.008, 0.008)
+        lon += random.uniform(-0.008, 0.008)
 
-    return round(latitude, 6), round(longitude, 6)
+    return round(lat, 6), round(lon, 6)
