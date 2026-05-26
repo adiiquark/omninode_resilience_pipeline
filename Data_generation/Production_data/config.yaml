@@ -3,7 +3,7 @@
 
 simulation:
  start_date: "2025-12-01"
- end_date: "2026-05-31"
+ end_date: "2026-06-30"
  random_seed: 42
 
 city_distribution:
@@ -26,6 +26,8 @@ mother_hubs:
   Hyderabad: {city_code: "HYD", zone: "Patancheru", zone_code: "PAT"}
   Chennai: {city_code: "CHN", zone: "Sriperumbudur", zone_code: "SPB"}
   Kolkata: {city_code: "KOL", zone: "Dankuni", zone_code: "DKN"}
+  Pune: {city_code: "PUN", zone: "Chakan", zone_code: "CKN"}
+  Ahmedabad: {city_code: "AMD", zone: "Sanand", zone_code: "SND"}
 
 regional_hubs:
  total: 20
@@ -63,7 +65,7 @@ darkstores:
 
 # -------Suppliers--------------------------
 suppliers:
- total: 15
+ total: 19
  edi_formats:
   API: { fraction: 0.25, quality_score_range: [0.85, 0.99]}
   SFTP_CSV: { fraction: 0.35, quality_score_range: [0.65,0.85]}
@@ -78,7 +80,7 @@ transfer_windows:
 
 # -------Replenishment-----------------------
 replenishment:
- reorder_trigger_fraction: 0.30 # trigger when stocj <30% of capacity
+ reorder_trigger_fraction: 0.30 # trigger when stock <30% of capacity
  top_up_target_fraction: 0.80 # fill to 80% capacity
  lateral_transfer_min_surplus: 20 # only transfer if source has 20+ unit surplus
  lateral_transfer_fraction: 0.50 # transfer 50% of surplus
@@ -147,7 +149,7 @@ cities:
     Baner: {code: "BNR", zone_type: "it_park_adjacent"}
     Hadapsar: {code: "HDP", zone_type: "it_park_adjacent"}
 
-  Ahemdabad:
+  Ahmedabad:
    city_code: "AMD"
    zone_type_tags:
     Navrangpura: {code: "NAV", zone_type: "commercial"}
