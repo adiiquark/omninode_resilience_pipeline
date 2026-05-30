@@ -114,7 +114,7 @@ class SupplierSchema(BaseModel):
     @field_validator("onboarded_date")
     @classmethod
     def onboarded_before_sim_start(cls, v: date) -> date:
-        if v >= SIM_START:
+        if v > SIM_START:
             raise ValueError(
                 f"onboarded_date {v} must be before sim start {SIM_START}"
             )
