@@ -100,7 +100,7 @@ zone_coordinates = {
     # --------Surat-----------------
     "Vesu": (21.1459, 72.7862),
     "Adajan": (21.1959, 72.7987),
-    "CityLight": (21.1724, 72.8262),
+    "Citylight": (21.1724, 72.8262),
 
 
     # --------Tier-2 city centroids---
