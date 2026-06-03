@@ -124,7 +124,7 @@ class SupplierSchema(BaseModel):
     def quality_score_consistent_with_edi(self) -> "SupplierSchema":
         """
         Soft guardrail: API suppliers should not have very low quality scores
-        and email_manula suppliers should not have very high ones.
+        and email_manual suppliers should not have very high ones.
         Catches generator misconfiguration early. 
         """
         if self.edi_format == "API" and self.data_quality_score < 0.60:
