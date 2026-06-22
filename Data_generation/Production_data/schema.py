@@ -66,7 +66,7 @@ class ProductSchema(BaseModel):
     def storage_zone_matches_category(self) -> "ProductSchema":
         """
         Ensures storage_zone is consistent with category.
-        dairy and frozen myst be cold.
+        dairy and frozen must be cold.
         beverages must be beverages.
         All others must be dry.
         """

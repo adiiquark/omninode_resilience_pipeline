@@ -129,7 +129,7 @@ def get_coordinates(
 
     Jitter:
     Applied only to darkstores so multiple stores in same
-    zone don't stacj on the same powerbi pin. 
+    zone don't stack on the same powerbi pin. 
     +- 0.008 degrees almost equal to +-900 metres -stays within
     the same neighborhood. 
 
