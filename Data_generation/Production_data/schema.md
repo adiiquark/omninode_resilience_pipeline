@@ -13,7 +13,7 @@ dim_product
 |shelf_life_days | int | > 0 |
 |storage_zone | str | enum - cold/dry/beverage |
 |reorder_point_units | int | >0 |
-|supplier_id | str | FK -> sim_supplier|
+|supplier_id | str | FK -> dim_supplier|
 
 
 dim_supplier
@@ -35,7 +35,7 @@ dim_node
 Column Name | data type | info
 | :--- | :--- | :--- | 
 | node_id | str | PK |
-| node_type | str | enum - darkstore/regional_hub/mother_hun
+| node_type | str | enum - darkstore/regional_hub/mother_hub
 | node_name | str | |
 | city | str | |
 | zone | str | enum - residential/commercial/it_park_adjacent/transit_hub/warehouse
