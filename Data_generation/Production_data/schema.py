@@ -26,9 +26,13 @@ import re
 
 
 # ---SIMULATION CONSTRAINTS------
-SIM_START = date(2025,12,1)
-SIM_END = date(2026,6,30)
+SIM_START = None
+SIM_END = None
 
+def configure_sim_window(start, end):
+    global SIM_START, SIM_END
+    SIM_START = start
+    SIM_END = end
 
 # ---dim_product---
 class ProductSchema(BaseModel):
